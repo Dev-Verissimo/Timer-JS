@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <title>Timer</title>
+  </head>
+  <body>
+    <button onclick="contar()">Iniciar Contador</button>
+
+    <div class="caixa-do-contador">
+      <div class="contador">
+        0
+      </div>
+      <div class="rotulo">Segundos</div>
+    </div>
+
+    <script>
+      const idInterval = setInterval(AlteraTempoRestante, 1000);
+      let periodo = prompt("Tempo desejada para o Timer: ");
+      const tempoNaTela = document.querySelector(".contador");
+      tempoNaTela.innerHTML = periodo;
+
+      while (periodo == 0 || periodo == null) {
+        periodo = prompt("Tempo desejada para o Timer: ");
+      }
+
+      function AlteraTempoRestante() {
+        if (periodo == 0) {
+          alert("fim do timer");
+          clearInterval(idInterval);
+        } else {
+          periodo--;
+          tempoNaTela.innerHTML = periodo;
+        }
+      }
+    </script>
+  </body>
+</html>
